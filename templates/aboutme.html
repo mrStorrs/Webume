@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- overriding nav bar due too text color not being able to be seen -->
+{% block nav %}
+  <nav class="js-navbar-scroll navbar fixed-top navbar-expand-lg navbar-dark u-overlay-dark">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo"
+          aria-controls="navbarTogglerDemo"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item mr-4 mb-2 mb-lg-0">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item mr-4 mb-2 mb-lg-0">
+            <a class="nav-link" href="{% url 'projects'%}">Projects</a>
+          </li>
+          <li class="nav-item mr-4 mb-2 mb-lg-0">
+            <a class="nav-link" href="{% url 'resume' %}">Resume</a>
+          </li>
+          <li class="nav-item mr-4 mb-2 mb-lg-0">
+            <a class="nav-link" href="{% url 'aboutme' %}">About Me</a>
+          </li>
+        </ul>
+        <div>
+          <!-- fix this contact page. remove modal -->
+          <a class="btn btn-primary" href="{% url 'contact' %}">
+            <i class="fas fa-phone-square mr-1"></i> Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+{% endblock nav %} 
+
+{% block mainimg %}
+<section class="u-promo-block u-promo-block--mheight-500 text-white bg-family" >
+    <div class="container u-overlay__inner u-ver-center u-content-space">
+    </div>
+  </section>
+{% endblock mainimg %}
+{% block content %}
+  <!-- General infos -->
+  <section class="u-content-space bg-dark-grey text-center">
+    <div class="container">
+      <header class=" w-md-50 mx-auto mb-4">
+        <h1>Intro</h1>
+      </header>
+      <h4> 
+        My full name is Christopher-Jason Keo Storrs. Growing up I have allways been
+        enthralled by technology. Each and every day some amazing invention, that changes
+        the way people percieve the world is created. My wish is to be one of the people
+        responsible for helping create those inventions.  I am the father of two beautiful
+        boys. They are my passion, my fuel, and my motivation to move forward. My main 
+        objective is to find a career that fuels my passion for technology. I want to be employed
+        at a company that challenges their employees, pushes them to grow, and cares
+        for them and their clients alike. What I lack in experience, I make up for in
+        passion, enthusiasm, and wiliness to learn. 
+      </h4>
+    </div>
+  </section>
+
+  <section class="u-content-space bg-light-grey text-center">
+    <div class="container">
+      <header class=" w-md-50 mx-auto mb-4">
+        <h1>Strengths & Skills</h1>
+      </header>
+      <div class="row">
+        <!-- Technical Skills -->
+        <div class="col-sm-6">
+          <h2>Technical</h2>
+          <div class="container shadow p-3 ">
+            <div class="row text-center">
+              <div class="col">
+                <p>Django <span class="iconify icon:cib:django"></span></p>
+              </div>
+              <div class="col">
+                <p>Python <i class="fab fa-python"></i></p>
+              </div>
+            </div>
+  
+            <div class="row text-center">
+              <div class="col">
+                <p>Full-Stack Web Dev <span class="iconify icon:mdi:web"></span></iconify-icon></p>
+              </div>
+              <div class="col">
+                <p>HTML <i class="fab fa-html5"></i></p>
+              </div>
+            </div>
+  
+            <div class="row text-center">
+              <div class="col">
+                <p>CSS <i class="fab fa-css3"></i></p>
+              </div>
+              <div class="col">
+                <p>BootStrap <i class="fab fa-bootstrap"></i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Non Technical Skills -->
+        <div class="col-sm-6">
+          <h2>Non-Technical</h2>
+          <div class="container shadow p-3 ">
+            <div class="row text-center">
+              <div class="col">
+                <p>Organized <i class="fas fa-cubes"></i></p>
+              </div>
+              <div class="col">
+                <p>Enthusiastic <i class="fas fa-smile-beam"></i></p>
+              </div>
+            </div>
+  
+            <div class="row text-center">
+              <div class="col">
+                <p>Energetic <i class="fas fa-bolt"></i></p>
+              </div>
+              <div class="col">
+                <p>Adaptable <i class="fas fa-random"></i></p>
+              </div>
+            </div>
+  
+            <div class="row text-center">
+              <div class="col">
+                <p>Experienced Communicator <i class="fas fa-bullhorn"></i></p>
+              </div>
+              <div class="col">
+                <p>Detail Oriented <i class="fas fa-bullseye"></i></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-content-space bg-dark-grey text-center">
+    <div class="container">
+      <header class=" w-md-50 mx-auto mb-4">
+        <h1>Goals & Aspirations</h1>
+      </header>
+      <h4>Get a job as a developer in the tech field </h4>
+      <h4>Obtain a BS in Computer Sciences (followed by a Masters)</h4>
+      <h4>Make a differance</h4>
+    </div>
+  </section>
+
+{% endblock content %}

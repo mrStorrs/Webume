@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div style="height: 60px; background-color: #525659;">
+
+</div>
+<!-- embeded pdf -->
+<section class="text-center">
+  <embed src="{% static 'img/resume/CJ_Storrs_Resume.pdf' %}" width='100%' height='1180px' />
+</section>
+
+<!-- downloadable versions -->
+<section class="u-content-space">
+  <div class='container'>
+    
+    <div class="row text-center display-4">
+      
+      <!-- .pdf version -->
+      <div class='col-lg-6 mb-5'>
+          <a class="" href="{% static 'img/resume/CJ_Storrs_Resume.pdf' %}" download>
+            <i class=" fas fa-file-pdf navy"></i>
+            <h5 >PDF</h5>
+          </a>  
+      </div>
+
+    <!-- .docx version -->
+      <div class='col-lg-6'>
+        <a class='' href="{% static 'img/resume/CJ_Storrs_Resume.docx' %}" download>
+          <i class="fas fa-file-pdf navy"></i>
+          <h5>DOCX</h5>
+        </a>  
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/simplemde.min.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+<!-- grey space at top of website for navbar. -->
+<div style="height: 60px; background-color: #525659;">
+</div>
+  <!-- loop through and create a section for each project -->
+  {% for project in projects %}
+    <!-- first if is to check which color the background should be -->
+    {% if project.color == 'white' %}
+      <section class="bt-light-grey u-content-space ">
+    {% else %}
+      <section class="bg-dark-grey u-content-space shadow-sm">
+    {% endif %}
+
+        <div class="container">
+          <div class = 'row'>
+            <!-- title and description -->
+            <div class='col-lg-5'>
+            <header class="text-left w-md-5 mx-auto mb-1">
+              <h2 class="h1">{{project.title}}</h2>
+            </header>
+              <p>{{project.get_description_as_markdown}}</p>
+            </div>
+
+            <!-- technical skills used -->
+            <div class='col-lg-2 shadow text-center'>
+              <header>
+                <h3>Tech</h3>
+              </header>
+              <div>
+                {{project.display_skills}}
+              </div>
+            </div>
+            
+            <!-- images of project -->
+            <div class='col-lg-5 align-self-center'>
+              <!-- id is set to change per pk of current project. This will match the href of 
+              controls. This will allow us to have multiple carousels with controls. -->
+              <div id="carousel-{{project.pk}}" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    {% for image in project.get_images %}
+                      {% if forloop.first %} <!-- the first element of bootraps carosel must be active-->
+                        <div class="carousel-item active">
+                      {% else %}
+                        <div class="carousel-item">
+                      {% endif %}
+                          <img class="d-block" src="{{ image.image.url }}" style="width: 100%; float: left; margin-right: 10px;">
+                        </div>
+                    {% endfor %} 
+                  </div>
+                  <a class="carousel-control-prev" href="#carousel-{{project.pk}}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel-{{project.pk}}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- edit/delete buttons only to be shown if logged in as superuser -->
+        {% if user.is_superuser %}
+          <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
+          <a href="{% url 'delete_project' project.pk %}" class=btn>Delete</a>
+        {% endif %}
+      </section>
+  {% endfor %}
+
+  <!-- if superuser, show add new form -->
+  {% if user.is_superuser %}
+    <div class="container mt-8 mb-8">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 ">
+          <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- for rendering form using bootstrap 4 -->
+              {% include 'includes/form.html' %}
+              <!-- Multi Image -->
+              {{ formset.management_form }}
+              {% for form in formset %}
+                {{ form.as_p }}
+              {% endfor %}
+            <button type="submit" class="btn btn-success">Post</button>
+          </form>
+        </div>
+    
+      </div>
+    </div>
+  {% endif %}
+{% endblock content %}
+
+{% block js %}
+  <!-- for markdown editor -->
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script>
+    // add markdown editor, forceSync needs to be on for submit button to work.
+    var simplemde = new SimpleMDE({forceSync: true});
+  </script>
+{% endblock js %}

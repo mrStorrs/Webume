@@ -1,0 +1,211 @@
+html {
+  font-size: 1rem;
+}
+
+/* used for footer override */
+.bg-black{
+  background-color: black;
+}
+/* change primary text color */
+.btn-primary{
+  background-color: #660033;
+  border-color: #660033;
+}
+.navy{
+
+  color: #660033;
+  /* color: #101650; */
+}
+
+.bg-light-grey{
+  background-color: whitesmoke;
+}
+.bg-dark-grey{
+  background-color: #F0F0F0	;
+}
+.u-overlay{
+  border-radius: 5%;
+  background: rgba(112, 110, 110, 0.45); /* Black background with 0.5 opacity */
+}
+.u-overlay-light{
+  border-radius: 5%;
+  background: rgba(112, 110, 110, 0.1); /* Black background with 0.5 opacity */
+}
+
+/* fix this to be differant than u-dark */
+.u-overlay-dark-name{
+  border-radius: 5%;
+  background: rgba(0, 0, 0, 0.80); /* Black background with 0.5 opacity */
+  padding: 10px;
+  min-width:  350px;
+  min-height:  210px;
+}
+.u-overlay-dark{
+  background: rgba(0, 0, 0, 0.60); /* Black background with 0.5 opacity */
+
+}
+/* stop code div from getting smaller on compression */
+.anti-squish{
+  min-width: 250px;
+}
+
+/* getting bullets to align correctly */
+ul {
+  text-align: center;
+  list-style-position: inside;
+}
+.bg-fancy{
+  background-image: url('/static/img/1920x1080/img4.jpg') ;
+}
+.bg-cool{
+  background-image: url('/static/img/1920x1080/dark_wood3.jpg');
+}
+.bg-family{
+  background-image: url('/static/img/1920x1080/family.jpg');
+}
+.bg-typewriter{
+  background-image: url('/static/img/1920x1080/typewriter.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 600px;
+
+}
+
+
+/* for skill col  */
+/* color for code animation on home screen */
+.code_blue{
+  color:blue
+}
+.code_turq{
+  color:turquoise
+}
+.code_yellow{
+  color:yellow
+}
+.code_orange{
+  color:darkgoldenrod;
+}
+.code_lgt_blue{
+  color:lightblue;
+}
+
+/* box shadow shading */
+.u-overlay, .u-promo-block, .shadow{
+  -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
+body {
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+  color: #1b1e24;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+a {
+  color: #101650;
+}
+
+a:hover {
+  color: #101650;
+}
+
+a:focus {
+  outline: none;
+}
+
+p {
+  /* this was 1.8 changed to fix ascII stand   */
+  line-height: 1;
+}
+
+figure {
+  margin-bottom: 0;
+}
+
+/* hr {
+  border-color: #e6e7e9;
+} */
+
+[role=button] {
+  cursor: pointer;
+}
+
+/*------------------------------------
+  Headings
+------------------------------------*/
+.h1, .h2, .h3, .h4, .h5, .h6, .h7,
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.6;
+}
+
+/*----------------------------------
+  Buttons
+------------------------------------*/
+.btn {
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+/*----------------------------------
+  Promo Block v1
+------------------------------------*/
+.u-promo-block {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  
+}
+
+/* this is only for the 'WHITE CPU' VERSION HTML */
+.u-promo-block2 {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  
+}
+
+/* move the -shadow to its own. to encompass everything it is inlcuded on */
+.u-promo-block--mheight-500 {
+  min-height: 600px;
+  padding-top: 6%;
+}
+
+/*----------------------------------
+  Spaces
+------------------------------------*/
+.u-content-space {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* navbar */
+/* fix to grey */
+.navbar-bg-onscroll.fixed-top {
+  background-color: black;
+  transition: all .3s ease-out;
+}
+
+.navbar-bg-onscroll.fixed-top--fade {
+  transition: all .4s ease-out;
+}
+
+/* change background color of mobile navbar */
+@media (max-width: 990px) {
+  nav.navbar {
+    background: rgba(0, 0, 0, 0.60);
+    width:135px;
+  }
+}

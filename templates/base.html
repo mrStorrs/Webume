@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" class="no-js">
+  <!-- Head -->
+  <head>
+    <title>{% block title %}CJ Storrs | Resume{% endblock %} </title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Playfair+Display:400,700%7COpen+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap.css'%}">
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    {% block stylesheet %}
+    {% endblock stylesheet %}
+  </head>
+
+  <body>
+    {% block nav %}
+      <nav class="js-navbar-scroll navbar fixed-top navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
+          <button class="navbar-toggler" type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo"
+              aria-controls="navbarTogglerDemo"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item mr-4 mb-2 mb-lg-0">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item mr-4 mb-2 mb-lg-0">
+                <a class="nav-link" href="{% url 'projects'%}">Projects</a>
+              </li>
+              <li class="nav-item mr-4 mb-2 mb-lg-0">
+                <a class="nav-link" href="{% url 'resume' %}">Resume</a>
+              </li>
+              <li class="nav-item mr-4 mb-2 mb-lg-0">
+                <a class="nav-link" href="{% url 'aboutme' %}">About Me</a>
+              </li>
+            </ul>
+            <div>
+              <!-- fix this contact page. remove modal -->
+              <a class="btn btn-primary" href="{% url 'contact' %}">
+                <i class="fas fa-phone-square mr-1"></i> Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% endblock nav %} 
+
+    {% block mainimg %}
+    {% endblock mainimg %}
+
+    {% block content %}
+    {% endblock content%}
+
+    {% block footer %}
+      <footer class="bg-black py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
+              <small class="text-white">&copy; 2020 <a class="text-white" href="#">cjstorrs</a>. All Rights Reserved.</small>
+            </div>
+
+            <div class="col-md-4 align-self-center">
+              <ul class="list-inline text-center text-md-right mb-0">
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="LinkedIn">
+                  <a class="text-white" href="https://www.linkedin.com/in/christopher-storrs-6003bb111">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Github">
+                  <a class="text-white" href="https://github.com/mrStorrs">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    {% endblock footer %}
+
+    <!-- JAVASCRIPTS -->
+    <script src="{% static 'vendors/jquery.min.js' %}"></script>
+    <!-- Popper, used for tooltips on mouseover -->
+    <script src="{% static 'vendors/popper.min.js' %}"></script>
+    <!--  -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script> -->
+    
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/f45f7db97a.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <!-- Theme Settings and Calls -->
+    <script src="{% static 'js/global.js' %}"></script>
+
+    {% block js %}
+    {% endblock js %}
+  </body>
+  <!-- End Body -->
+</html>
