@@ -7,8 +7,12 @@
 
 </div>
 <!-- embeded pdf -->
-<section class="text-center">
-  <iframe src="https://drive.google.com/file/d/1DWOXmyGhkj13RE-l6eXf8aYI9a8E97YW/preview" width=100% height=950px></iframe>
+<section class="text-center " >
+  <div class="row justify-content-center">
+    <div class="col-lg-8 embed-responsive embed-responsive-1by1" style="min-height:600px;">
+      <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/1DWOXmyGhkj13RE-l6eXf8aYI9a8E97YW/preview" ></iframe>
+    </div>
+  </div>
 </section>
 
 <!-- downloadable versions -->
@@ -37,8 +41,3 @@
   </div>
 </section>
 {% endblock content %}
-
-{% block js %}
-  <script src="{% static 'js/pdf.js' %}"></script>
-
-{% endblock js %}
