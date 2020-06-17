@@ -36,8 +36,8 @@ html {
 .u-overlay-dark-name{
   border-radius: 5%;
   background: rgba(0, 0, 0, 0.80); /* Black background with 0.5 opacity */
-  padding: 10px;
-  min-width:  350px;
+  padding: 30px;
+  /* min-width:  350px; */
   min-height:  210px;
 }
 .u-overlay-dark{
