@@ -15,14 +15,13 @@ def projects(request):
     projects = Projects.objects.all()
     images = Images.objects.all()
     
-    print(images.filter(project=7))
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
         formset = ImageFormSet(request.POST, request.FILES, queryset=Images.objects.none())
         if form.is_valid() and formset.is_valid(): 
             project = form.save(commit=False)
             project.save()
-
+            # saving images
             for form in formset.cleaned_data:
                 image = form['image']
                 photo = Images(project=project, image=image)
@@ -40,13 +39,6 @@ def edit_project(request, pk):
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
-            # project.update(
-            #     title = form.cleaned_data['title'],
-            #     description = form.cleaned_data['description'],
-            #     skills = form.cleaned_data['skills'],
-            #     color = form.cleaned_data['color'],
-            #     images = form.cleaned_data['images'],
-            # )
             project = form.save(commit=False)
             project.save()
             return redirect('projects')
@@ -57,6 +49,7 @@ def edit_project(request, pk):
     return render(request, 'edit_project.html', {'form' : form})
 
 def delete_project(request, pk):
+    # removeing projects. images associated will be deleted due to cascade in models.
     project = Projects.objects.filter(pk=pk)
     project.delete()
     return redirect('projects')
@@ -78,11 +71,10 @@ def contact(request):
             company = form.cleaned_data['company']
             message = form.cleaned_data['message']
             
-            # send all info in body of email.
+            # send all info in msg of email.
             message = "from: " + from_email  + "\ncompany: " + company + "\nmessage:\n" + message
             try:
                 send_mail(subject, message, from_email, ['cj.storrs@gmail.com'])
-                # counting msgs sent
                 return redirect('contact_success')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')

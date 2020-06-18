@@ -9,26 +9,27 @@
       <div class="col-lrg-1 u-overlay mt-9">
         <div class="text-center u-overlay-dark-name m-1">
           <h1 class="pl-4 pr-4" style="font-size: 64px;">CJ Storrs</h1>
-          <p class="h6 text-uppercase u-letter-spacing-sm mb-2"><span id='typed_desc'></span><span class='navy font-weight-bold' id='typed_desc_scroll'></span></p>
-          <!-- linked in favicon -->
+          <p class="h6 text-uppercase u-letter-spacing-sm mb-2"><span id='typed_desc'></span><span class='text-primary font-weight-bold' id='typed_desc_scroll'></span></p>
+          
+          <!-- linked in icon -->
           <ul class="list-inline text-center mb-0">
             <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Linkedin">
               <a class="text-white" href="https://www.linkedin.com/in/christopher-storrs-6003bb111">
                 <i class="fab fa-linkedin"></i>
               </a>
             </li>
-          <!-- github favicon -->
+          <!-- github icon -->
             <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="github">
               <a class="text-white" href="https://github.com/mrStorrs">
                 <i class="fab fa-github"></i>
               </a>
             </li>
           </ul>
+
         </div>
       </div>
     </div>
   </div>
-
 </section>
 {% endblock mainimg %}
 
@@ -36,14 +37,14 @@
   <!-- Skills/Experience -->
   <section class="u-content-space bg-dark-grey">
       <div class="container">
-          
         <div class="row text-center">
+
         <!-- skills Coloumn -->
           <div class="col-lg-4 mb-5 mb-lg-0">
-  
+
             <header>
-              <div class="display-4 text-primary mb-2">
-                <i class="fas fa-align-justify navy"></i>
+              <div class="display-4 mb-2">
+                <i class="fas fa-align-justify text-primary"></i>
               </div>
               <h5 class="mb-4">Technical Skills</h5>
             </header>
@@ -75,14 +76,15 @@
                   <p>BootStrap <i class="fab fa-bootstrap"></i></p>
                 </div>
               </div>
+
             </div>
           </div>
   
           <!-- Experience Column -->
           <div class="col-lg-4 mb-5 mb-lg-0 text-center">
             <header>
-              <div class="display-4 text-primary mb-2">
-                <i class="fas fa-keyboard navy"></i>
+              <div class="display-4 mb-2">
+                <i class="fas fa-keyboard text-primary"></i>
               </div>
               <h5 class="mb-4">Objective</h5>
             </header>
@@ -95,13 +97,12 @@
                 and <strong>wiliness to learn</strong>.
               </p>
             </div>
-  
           </div>  
   
           <!-- Education Column -->
           <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="display-4 text-primary mb-2">
-              <i class="fas fa-book-open navy"></i>
+            <div class="display-4 mb-2">
+              <i class="fas fa-book-open text-primary"></i>
             </div>
             <h5 class="mb-4">Education</h5>
             <div class="container text-center shadow">
@@ -109,7 +110,7 @@
               <div class="row">
                 <div class="col pt-2">
                   <h5>Coding Dojo</h5>
-                  <p class="navy">Python Full-Stack Web Dev.
+                  <p class="text-primary">Python Full-Stack Web Dev.
                     <br>2019
                   </p>
                 </div>
@@ -118,7 +119,7 @@
               <div class="row">
                 <div class="col">
                   <h5>University of the People</h5>
-                  <p class='navy'>Bachelors in Computer Sciences
+                  <p class='text-primary'>Bachelors in Computer Sciences
                     <br>Graduation 2022
                   </p>
                 </div>
@@ -133,17 +134,14 @@
           <div class='col'>
             <p>
               For more info; 
-              <a class="navy font-weight-bold" href="{% url 'resume' %}">
+              <a class="text-primary font-weight-bold" href="{% url 'resume' %}">
                 About me
               </a>
               or 
-              <a class="navy font-weight-bold" href="{% url 'resume' %}">
+              <a class="text-primary font-weight-bold" href="{% url 'resume' %}">
                 Resume
               </a>
             </p>
-            <!-- <a class="navy font-weight-bold" href="{% url 'resume' %}">
-              Full Resume and Download here <i class="fas fa-arrow-right ml-1"></i>
-            </a> -->
           </div>
         </div>
   
@@ -155,11 +153,10 @@
     <div class="container">
       <header class="text-center w-md-50 mx-auto mb-4">
         <h1>Projects</h1>
-        <!-- <h5 class="navy">Check out some of the things I have worked on!</h5> -->
       </header>
       <div class="row justify-content-center">
-        
-          
+
+        <!-- This website..... -->
         <div class="col-lg-8 mb-5">
           <a href="{% url 'projects' %}">
             <figure>
@@ -169,7 +166,7 @@
                   <h5 class="mb-1">This Website</h5>
                   <medium class="d-block font-style-normal text-primary u-letter-spacing-xs">
                     Built from the gound up using; Django, Python, CSS, HTML, and more. This website is an 
-                    excellent representation of knowledge of full-stack web development. Click me for more
+                    excellent representation of my knowledge in full-stack web development. Click me for more
                     details.
                   </medium>
                 </div>
@@ -182,36 +179,31 @@
     </div>
   </section>
 
-
-
   <!-- contact section -->
   <section class='u-content-space bg-dark-grey'>
       <div class="container">
         <header class="text-center w-md-50 mx-auto mb-4 ">
           <h2 class="h1">Contact</h2>
         </header>
-        
-        <div class="row text-center navy">
+        <!-- email -->
+        <div class="row text-center text-primary">
           <div class="col">
             <p class="h5"><i class="fas fa-envelope mr-2"></i> cj.storrs@gmail.com</p>
           </div>
         </div>
-        <div class="row text-center navy">
-            <div class="col">
-              <a href="https://www.linkedin.com/in/christopher-storrs-6003bb111">
-                <p class="h5 navy"><i class="fab fa-linkedin mr-3"></i> LinkedIn</p>
-              </a>
-            </div>
+        <!-- linkedin -->
+        <div class="row text-center text-primary">
+          <div class="col">
+            <a href="https://www.linkedin.com/in/christopher-storrs-6003bb111">
+              <p class="h5 text-primary"><i class="fab fa-linkedin mr-3"></i> LinkedIn</p>
+            </a>
           </div>
+        </div>
       </div>
   </section>
-
-
-
 {% endblock content %}
 
 {% block js %}
-
   <!-- typed.js used for typed animation in heading -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <script>
@@ -227,7 +219,7 @@
         });
 
         var typed_desc = new Typed('#typed_desc_scroll',{
-          strings: ['Enthusiast', 'lover', 'developer', 'programmer'],
+          strings: ['Enthusiast', 'developer', 'programmer', 'designer'],
           backSpeed: 0,
           typeSpeed: 100,
           startDelay: 1200,
@@ -236,5 +228,4 @@
         });
       });
   </script>
-
 {% endblock js %}

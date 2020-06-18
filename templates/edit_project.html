@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load widget_tweaks %}
+{% load widget_tweaks static %}
 
 {% block stylesheet %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/simplemde.min.css' %}">
 {% endblock stylesheet %}
-
 
 {% block content %}
 <div style="height: 60px; background-color: #525659;">
@@ -25,7 +23,6 @@
         <button type="submit" class="btn btn-success">Post</button>
       </form>
     </div>
-
   </div>
 </div>
 {% endblock %}
@@ -34,7 +31,7 @@
 <!-- for markdown editor -->
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>
-  // add markdown editor, forceSync needs to be on for submit button to work.
+  // add markdown editor to first textarea, forceSync needs to be on for submit button to work.
   var simplemde = new SimpleMDE({forceSync: true});
 </script>
 {% endblock js %}

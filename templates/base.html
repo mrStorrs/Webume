@@ -2,7 +2,6 @@
 {% load static %}
 
 <html lang="en" class="no-js">
-  <!-- Head -->
   <head>
     <title>{% block title %}CJ Storrs | Resume{% endblock %} </title>
     <meta charset="utf-8"/>
@@ -12,10 +11,10 @@
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Playfair+Display:400,700%7COpen+Sans:300,400,600,700" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap.css'%}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
     <!-- Personal CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
     {% block stylesheet %}
     {% endblock stylesheet %}
   </head>
@@ -50,12 +49,12 @@
               </li>
             </ul>
             <div>
-              <!-- fix this contact page. remove modal -->
               <a class="btn btn-primary" href="{% url 'contact' %}">
                 <i class="fas fa-phone-square mr-1"></i> Contact
               </a>
             </div>
           </div>
+
         </div>
       </nav>
     {% endblock nav %} 
@@ -71,6 +70,7 @@
         <div class="container">
           <div class="row justify-content-end">
             <div class="col-md-4 align-self-center">
+
               <!-- links. -->
               <ul class="list-inline text-center text-md-right mb-0">
                 <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="LinkedIn">
@@ -92,21 +92,22 @@
     {% endblock footer %}
 
     <!-- JAVASCRIPTS -->
-    <script src="{% static 'vendors/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
     <!-- Popper, used for tooltips on mouseover -->
-    <script src="{% static 'vendors/popper.min.js' %}"></script>
-    <!--  -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- <script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script> -->
-    
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
     <!-- ICONS -->
     <script src="https://kit.fontawesome.com/f45f7db97a.js" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <!-- Theme Settings and Calls -->
+
+    <!-- Main Js -->
     <script src="{% static 'js/global.js' %}"></script>
 
     {% block js %}
     {% endblock js %}
   </body>
-  <!-- End Body -->
 </html>

@@ -1,26 +1,16 @@
 {% extends 'base.html' %}
-{% load static widget_tweaks %}
-
-
+{% load widget_tweaks %}
 
 {% block content %}
 <div style="height: 60px; background-color: #525659;">
 </div>
 
-
+<!-- contact form here -->
 <section class='u-content-space'>
   <div class="container">
-
-    {% if msgs_sent > 0 %}
-      <header class="text-center w-md-50 mx-auto mb-4 ">
-        <h1>Message sent successfully!</h1>
-      </header>
-    {% else %}
-      <header class="text-center w-md-50 mx-auto mb-4 ">
-        <h1>Send me a message!</h1>
-      </header>
-    {% endif %}
-    
+    <header class="text-center w-md-50 mx-auto mb-4 ">
+      <h1>Send me a message!</h1>
+    </header>
     <div class='row justify-content-center'>
       <div class="col-lg-6">
         <form method="post" novalidate>
@@ -33,6 +23,7 @@
   </div>
 </section>
 
+<!-- other forms of contact here -->
 <section class='u-content-space bg-light-grey'>
   <div class="container">
     <header class="text-center w-md-50 mx-auto mb-4 ">
@@ -44,6 +35,7 @@
         <p class="h5"><i class="fas fa-envelope mr-2"></i> cj.storrs@gmail.com</p>
       </div>
     </div>
+    
     <div class="row text-center navy">
       <div class="col">
         <a href="https://www.linkedin.com/in/christopher-storrs-6003bb111">

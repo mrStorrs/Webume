@@ -3,6 +3,7 @@
 
 <!-- overriding nav bar due too text color not being able to be seen -->
 {% block nav %}
+<!-- only change is here with a dark overlay -->
   <nav class="js-navbar-scroll navbar fixed-top navbar-expand-lg navbar-dark u-overlay-dark">
     <div class="container-fluid">
 
@@ -31,7 +32,6 @@
           </li>
         </ul>
         <div>
-          <!-- fix this contact page. remove modal -->
           <a class="btn btn-primary" href="{% url 'contact' %}">
             <i class="fas fa-phone-square mr-1"></i> Contact
           </a>
@@ -42,7 +42,7 @@
 {% endblock nav %} 
 
 {% block mainimg %}
-<section class="u-promo-block u-promo-block--mheight-500 text-white bg-family" >
+  <section class="u-promo-block u-promo-block--mheight-500 text-white bg-family" >
     <div class="container u-overlay__inner u-ver-center u-content-space">
     </div>
   </section>
@@ -56,15 +56,15 @@
         <h1>Intro</h1>
       </header>
       <h4> 
-        My full name is Christopher-Jason Keo Storrs. Growing up I have allways been
-        enthralled by technology. Each and every day some amazing invention, that changes
-        the way people percieve the world is created. My wish is to be one of the people
-        responsible for helping create those inventions.  I am the father of two beautiful
-        boys. They are my passion, my fuel, and my motivation to move forward. My main 
-        objective is to find a career that fuels my passion for technology. I want to be employed
-        at a company that challenges their employees, pushes them to grow, and cares
-        for them and their clients alike. What I lack in experience, I make up for in
-        passion, enthusiasm, and wiliness to learn. 
+        My full name is Christopher-Jason Keo Storrs. Growing up I have always
+        been enthralled by technology. Every day, some amazing invention that changes
+        the way people perceive the world, is created. My wish is to be one of the
+        people responsible for helping create such inventions.  I am the father of
+        two beautiful boys. They are my love, my fuel, and my motivation to move forward.
+        My main objective is to find a career that fuels my passion for technology. I
+        want to be employed at a company that challenges their employees, pushes them
+        to grow, and cares for them and their clients alike. What I lack in experience,
+        I make up for in passion, enthusiasm, and wiliness to learn. 
       </h4>
     </div>
   </section>
