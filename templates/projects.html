@@ -30,9 +30,9 @@
             </div>
 
             <!-- technical skills used -->
-            <div class='col-lg-2 shadow text-center'>
+            <div class='col-lg-2 shadow text-center pt-3 pb-3' style="background-color: white;">
               <header>
-                <h3>Tech</h3>
+                <h3>Tech Used</h3>
               </header>
               <div>
                 {{project.display_skills}}
@@ -82,7 +82,6 @@
         <div class="col-lg-6 ">
           <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
-              <!-- for rendering form using bootstrap 4 -->
               {% include 'includes/form.html' %}
               <!-- Multi Image -->
               {{ formset.management_form }}

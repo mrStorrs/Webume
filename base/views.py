@@ -13,8 +13,8 @@ def projects(request):
     ImageFormSet = modelformset_factory(Images, form=ImageForm, extra=3)
     projects = Projects.objects.all()
     images = Images.objects.all()
-    count = 0 #used for images.
-    # print(images.filter(project=7))
+    
+    print(images.filter(project=7))
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
         formset = ImageFormSet(request.POST, request.FILES, queryset=Images.objects.none())
@@ -36,28 +36,28 @@ def projects(request):
 def edit_project(request, pk):
     project = Projects.objects.filter(pk=pk)
     instance = project.first()
-
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=instance)
-
         if form.is_valid():
+            # project.update(
+            #     title = form.cleaned_data['title'],
+            #     description = form.cleaned_data['description'],
+            #     skills = form.cleaned_data['skills'],
+            #     color = form.cleaned_data['color'],
+            #     images = form.cleaned_data['images'],
+            # )
             project = form.save(commit=False)
             project.save()
-
-
             return redirect('projects')
     else:
         #display edit form and
         form = ProjectForm(instance=project.first())
 
-    return render(request, 'edit_project.html', {'form' : form}) 
+    return render(request, 'edit_project.html', {'form' : form})
 
 def delete_project(request, pk):
-    # delete project
     project = Projects.objects.filter(pk=pk)
     project.delete()
-    
-    #don't need to delete images since when the foreign key is deleted the images will also be deleted.
     return redirect('projects')
 
 def resume(request):
@@ -74,7 +74,12 @@ def contact(request):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
+            company = form.cleaned_data['company']
             message = form.cleaned_data['message']
+            # the "from_email" portion doesn't work with gmail. So I added this
+            # to include the email in the message so that I can see who it is.
+            # also adding the company as well.
+            message = "from: " + from_email  + "\ncompany: " + company + "\nmessage:\n" + message
             try:
                 send_mail(subject, message, from_email, ['cj.storrs@gmail.com'])
             except BadHeaderError:
@@ -83,4 +88,4 @@ def contact(request):
     return render(request, "contact.html", {'form': form})
 
 def contact_success(request):
-    return HttpResponse('Success! Thank you for your message.')
+    return render(request, "contact_success.html")

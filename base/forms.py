@@ -30,5 +30,6 @@ class ImageForm(forms.ModelForm):
 
 class ContactForm(forms.Form):
     from_email = forms.EmailField(required=True)
+    company = forms.CharField(required=False)
     subject = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
