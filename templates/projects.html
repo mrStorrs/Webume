@@ -24,7 +24,7 @@
             <!-- title and description -->
             <div class='col-lg-5'>
             <header class="text-left w-md-5 mx-auto mb-1">
-              <h2 class="h1">{{project.title}}</h2>
+              <h2 class="h1">{{project.get_title_as_markdown}}</h2>
             </header>
               <p>{{project.get_description_as_markdown}}</p>
             </div>
@@ -40,7 +40,7 @@
             </div>
             
             <!-- images of project -->
-            <div class='col-lg-5 align-self-center'>
+            <div class='col-lg-5 align-self-center pt-3'>
               <!-- id is set to change per pk of current project. This will match the href of 
               controls. This will allow us to have multiple carousels with controls. -->
               <div id="carousel-{{project.pk}}" class="carousel slide" data-ride="carousel">

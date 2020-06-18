@@ -17,6 +17,9 @@ class Projects(models.Model):
     def get_description_as_markdown(self):
         return mark_safe(markdown(self.description, safe_mode='escape'))
 
+    def get_title_as_markdown(self):
+        return mark_safe(markdown(self.title, safe_mode='escape'))
+
     def display_skills(self):
         #skills are saved as a sting. first filter out all unneeded charachters
         #then display the result as markdown
