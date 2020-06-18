@@ -6,6 +6,7 @@ from django.forms.models import modelformset_factory
 from .forms import ProjectForm, ContactForm, ImageForm
 from .models import Projects, Images
 
+
 def home(request):
     return render(request, 'home.html')
 
@@ -76,15 +77,16 @@ def contact(request):
             from_email = form.cleaned_data['from_email']
             company = form.cleaned_data['company']
             message = form.cleaned_data['message']
-            # the "from_email" portion doesn't work with gmail. So I added this
-            # to include the email in the message so that I can see who it is.
-            # also adding the company as well.
+            
+            # send all info in body of email.
             message = "from: " + from_email  + "\ncompany: " + company + "\nmessage:\n" + message
             try:
                 send_mail(subject, message, from_email, ['cj.storrs@gmail.com'])
+                # counting msgs sent
+                return redirect('contact_success')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect('contact_success')
+            # return redirect('contact')
     return render(request, "contact.html", {'form': form})
 
 def contact_success(request):

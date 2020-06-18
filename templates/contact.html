@@ -7,11 +7,19 @@
 <div style="height: 60px; background-color: #525659;">
 </div>
 
+
 <section class='u-content-space'>
   <div class="container">
-    <header class="text-center w-md-50 mx-auto mb-4 ">
-      <h1>Send me a message!</h1>
-    </header>
+
+    {% if msgs_sent > 0 %}
+      <header class="text-center w-md-50 mx-auto mb-4 ">
+        <h1>Message sent successfully!</h1>
+      </header>
+    {% else %}
+      <header class="text-center w-md-50 mx-auto mb-4 ">
+        <h1>Send me a message!</h1>
+      </header>
+    {% endif %}
     
     <div class='row justify-content-center'>
       <div class="col-lg-6">
