@@ -51,9 +51,6 @@ ul {
 }
 
 /* background images */
-.bg-fancy{
-  background-image: url('/static/img/1920x1080/img4.jpg') ;
-}
 .bg-cool{
   background-image: url('/static/img/1920x1080/dark_wood3.jpg');
 }
