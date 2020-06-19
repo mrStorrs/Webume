@@ -42,10 +42,17 @@
 {% endblock nav %} 
 
 {% block mainimg %}
-  <section class="u-promo-block u-promo-block--mheight-500 text-white bg-family" >
-    <div class="container u-overlay__inner u-ver-center u-content-space">
-    </div>
-  </section>
+<!-- image for everything but xs screens -->
+<section class="u-promo-block u-promo-block--mheight-600 text-white bg-family d-none d-sm-block" >
+  <div class="container u-overlay__inner u-ver-center u-content-space">
+  </div>
+</section>
+
+<!-- image only for xs screens -->
+<section class="u-promo-block u-promo-block--mheight-500 text-white bg-family-small d-block d-sm-none" >
+  <div class="container u-overlay__inner u-ver-center u-content-space">
+  </div>
+</section>
 {% endblock mainimg %}
 
 {% block content %}
@@ -64,7 +71,7 @@
         My main objective is to find a career that fuels my passion for technology. I
         want to be employed at a company that challenges their employees, pushes them
         to grow, and cares for them and their clients alike. What I lack in experience,
-        I make up for in passion, enthusiasm, and wiliness to learn. 
+        I make up for in passion, enthusiasm, and willingness to learn. 
       </h4>
     </div>
   </section>

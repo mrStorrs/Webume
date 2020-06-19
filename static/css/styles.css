@@ -60,6 +60,9 @@ ul {
 .bg-family{
   background-image: url('/static/img/1920x1080/family.jpg');
 }
+.bg-family-small{
+  background-image: url('/static/img/1920x1080/family_small.jpg')
+}
 
 /* box shadow shading */
 .u-overlay, .u-promo-block, .shadow{
@@ -117,8 +120,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* move the -shadow to its own. to encompass everything it is inlcuded on */
-.u-promo-block--mheight-500 {
+.u-promo-block--mheight-600 {
   min-height: 600px;
+  padding-top: 6%;
+}
+.u-promo-block--mheight-500 {
+  min-height: 500px;
   padding-top: 6%;
 }
 
