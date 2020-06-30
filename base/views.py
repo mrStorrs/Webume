@@ -11,7 +11,7 @@ def home(request):
     return render(request, 'home.html')
 
 def projects(request):
-    ImageFormSet = modelformset_factory(Images, form=ImageForm, extra=3)
+    ImageFormSet = modelformset_factory(Images, form=ImageForm, extra=5)
     projects = Projects.objects.all()
     images = Images.objects.all()
     

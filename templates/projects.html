@@ -66,6 +66,12 @@
                   </a>
               </div>
             </div>
+            
+            <!-- edit/delete buttons only to be shown if logged in as superuser -->
+            {% if user.is_superuser %}
+              <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
+              <a href="{% url 'delete_project' project.pk %}" class=btn>Delete</a>
+            {% endif %}
 
             <!-- modal images carousel -->
             <div class="modal fade" id="modal_1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -100,11 +106,6 @@
             </div>
           </div>
         </div>
-        <!-- edit/delete buttons only to be shown if logged in as superuser -->
-        {% if user.is_superuser %}
-          <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
-          <a href="{% url 'delete_project' project.pk %}" class=btn>Delete</a>
-        {% endif %}
       </section>
   {% endfor %}
 

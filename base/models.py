@@ -37,3 +37,5 @@ class Images(models.Model):
     project = models.ForeignKey(Projects, default=None, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', verbose_name='Image')
 
+        
+
