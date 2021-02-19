@@ -9,18 +9,19 @@ class Projects(models.Model):
     description = models.CharField(max_length=4000)
     color = models.CharField(max_length=6)
     skills = models.CharField(max_length=1000)
+    # images = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.title
 
-    def get_description_as_markdown(self): #display desc as markdown.
+    def get_description_as_markdown(self):
         return mark_safe(markdown(self.description, safe_mode='escape'))
 
-    def get_title_as_markdown(self): #display title as markdown
+    def get_title_as_markdown(self):
         return mark_safe(markdown(self.title, safe_mode='escape'))
 
     def display_skills(self):
-        #skills are saved as a sting. first filter out all unneeded characters
+        #skills are saved as a sting. first filter out all unneeded charachters
         #then display the result as markdown
         skills = self.skills.translate({ord(i): None for i in "[]',"})
         return mark_safe(markdown(skills, safe_mode='escape'))
@@ -29,6 +30,7 @@ class Projects(models.Model):
     def get_images(self):
         return Images.objects.filter(project=self.pk)
 
+# need to remove this somehow...
 def get_image_filename(instance, filename):
     id = instance.project.id
     return "images/%s" % (id)
@@ -36,6 +38,4 @@ def get_image_filename(instance, filename):
 class Images(models.Model):
     project = models.ForeignKey(Projects, default=None, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', verbose_name='Image')
-
-        
 

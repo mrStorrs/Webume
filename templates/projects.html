@@ -2,11 +2,17 @@
 {% load static %}
 {% load widget_tweaks %}
 
+
 {% block stylesheet %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/simplemde.min.css' %}">
+
+  
 {% endblock stylesheet %}
 
 {% block content %}
+<!-- declare slides here to avoid undefined issues in firefox and IE -->
+<script> slides = [0, 1, 2, 3, 4]; </script>
+
 <!-- grey space at top of website for navbar. -->
 <div style="height: 60px; background-color: #525659;">
 </div>
@@ -66,7 +72,7 @@
                   </a>
               </div>
             </div>
-            
+
             <!-- edit/delete buttons only to be shown if logged in as superuser -->
             {% if user.is_superuser %}
               <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
@@ -77,7 +83,7 @@
             <div class="modal fade" id="modal_1" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered d-inline" role="document">
                 <div class="modal-content col-lg-12">
-                  <div class="modal-body">
+                  <div class="modal-body pt-3">
                     <!-- dynamic 2nd carousel id -->
                     <div id="carousel2-{{project.pk}}" class="carousel slide" data-interval="false">
                       <div class="carousel-inner" data-toggle="modal" data-target="#modal_1">
@@ -101,12 +107,12 @@
                       </a>
                     </div>
                   </div>
-               <div class="modal-footer">
+              <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </section>
+    </section>
   {% endfor %}
 
   <!-- if superuser, show add new form -->
@@ -143,17 +149,21 @@
     // on the non-modal images that it resets the starting slide of the modal image
     // to the one that the non-modal is on. This is so whatever image is displayed on the 
     // webpage will be the one that pops up first in the modal
-    var slides = [0,1,2] // Each project only allows 3 Images
+    
+    // slides is declared in "content" block. This is due to the way JS variables are hoisted
+    // on IE and Firefox if I were to declare slides here the functions would return undefined
+
     function carousel_prev() {    //shift values to the right when prev btn clicked
-      slides.unshift(slides[2]); 
+      slides.unshift(slides[4]); 
       slides.pop();
     }
     function carousel_next() {    //shift values to left when next btn clicked
-      slides.push(slides[0])
+      slides.push(slides[0]);
       slides.shift();
     }
     function carousel_reset(){
       $('.carousel').carousel(slides[0]);   //reset clicked carousel to correct slide
     }
+
   </script>
 {% endblock js %}
