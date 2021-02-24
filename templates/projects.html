@@ -10,9 +10,6 @@
 {% endblock stylesheet %}
 
 {% block content %}
-<!-- declare slides here to avoid undefined issues in firefox and IE -->
-<script> slides = [0, 1, 2, 3, 4]; </script>
-
 <!-- grey space at top of website for navbar. -->
 <div style="height: 60px; background-color: #525659;">
 </div>
@@ -27,12 +24,18 @@
 
         <div class="container">
           <div class = 'row'>
+
             <!-- title and description -->
             <div class='col-lg-5'>
-            <header class="text-left w-md-5 mx-auto mb-1">
-              <h2 class="h1">{{project.get_title_as_markdown}}</h2>
-            </header>
+              <header class="text-left w-md-5 mx-auto mb-1">
+                <h2 class="h1">{{project.get_title_as_markdown}}</h2>
+              </header>
               <p>{{project.get_description_as_markdown}}</p>
+              <!-- edit/delete buttons only to be shown if logged in as superuser -->
+              {% if user.is_superuser %}
+                <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
+                <a href="{% url 'delete_project' project.pk %}" class=btn>Delete</a>
+              {% endif %}
             </div>
 
             <!-- technical skills used -->
@@ -47,9 +50,9 @@
             
             <!-- images project column-->
             <div class='col-lg-5 align-self-center pt-3'>
-              <!-- id is set to change per pk of current project. This will match the href of 
+              <!-- standard image carousel. id is set to change per pk of current project. This will match the href of 
               controls. This will allow us to have multiple carousels with controls. -->
-              <div id="carousel-{{project.pk}}" class="carousel slide" data-interval="false">
+              <div id="carousel-{{project.pk}}" class="carousel slide" data-interval="false">             
                   <div class="carousel-inner" data-toggle="modal" data-target="#modal_1-{{project.pk}}">
                     {% for image in project.get_images %}
                       {% if forloop.first %} <!-- the first element of bootraps carosel must be active-->
@@ -57,27 +60,22 @@
                       {% else %}
                         <div class="carousel-item">
                       {% endif %}
-                          <img class="d-block" src="{{ image.image.url }}" onclick="carousel_reset()" style="width: 100%; float: left; margin-right: 10px;">
+                          <img class="d-block" src="{{ image.image.url }}" style="width: 100%; float: left; margin-right: 10px;">
+                          <!-- <img class="d-block" src="{{ image.image.url }}" onclick="carousel_reset('.carousel')" style="width: 100%; float: left; margin-right: 10px;"> -->
                         </div>
                     {% endfor %} 
                   </div>
                   <!-- controls also change the position of the modal carosel throuhgh the onclick funcitons. -->
-                  <a class="carousel-control-prev" href="#carousel-{{project.pk}}" onclick="carousel_prev()" role="button" data-slide="prev">
+                  <a class="carousel-control-prev" href="#carousel-{{project.pk}}" onclick="carousel_prev({{project.pk}})" role="button" data-slide="prev" >
                     <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                     <span class="sr-only">Previous</span>
                   </a>
-                  <a class="carousel-control-next" href="#carousel-{{project.pk}}" onclick="carousel_next()" role="button" data-slide="next">
+                  <a class="carousel-control-next" href="#carousel-{{project.pk}}" onclick="carousel_next({{project.pk}})" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="false"></span>
                     <span class="sr-only">Next</span>
                   </a>
               </div>
             </div>
-
-            <!-- edit/delete buttons only to be shown if logged in as superuser -->
-            {% if user.is_superuser %}
-              <a href="{% url 'edit_project' project.pk %}" class=btn>Edit</a>
-              <a href="{% url 'delete_project' project.pk %}" class=btn>Delete</a>
-            {% endif %}
 
             <!-- modal images carousel -->
             <div class="modal fade" id="modal_1-{{project.pk}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -85,7 +83,7 @@
                 <div class="modal-content col-lg-12">
                   <div class="modal-body pt-3">
                     <!-- dynamic 2nd carousel id -->
-                    <div id="carousel2-{{project.pk}}" class="carousel slide" data-interval="false">
+                    <div id="2carousel-{{project.pk}}" class="carousel slide" data-interval="false">
                       <div class="carousel-inner" data-toggle="modal" data-target="#modal_1-{{project.pk}}">
                         {% for image in project.get_images %}
                           {% if forloop.first %} <!-- the first element of bootraps carosel must be active-->
@@ -97,11 +95,11 @@
                             </div>
                         {% endfor %} 
                       </div>
-                      <a class="carousel-control-prev" href="#carousel2-{{project.pk}}" role="button" data-slide="prev">
+                      <a class="carousel-control-prev" href="#2carousel-{{project.pk}}" onclick="carousel_prev({{project.pk}}" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
-                      <a class="carousel-control-next" href="#carousel2-{{project.pk}}" role="button" data-slide="next">
+                      <a class="carousel-control-next" href="#2carousel-{{project.pk}}" onclick="carousel_next({{project.pk}}" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </a>
@@ -144,25 +142,16 @@
     // add markdown editor, forceSync needs to be on for submit button to work.
     var simplemde = new SimpleMDE({forceSync: true});
 
-
-    // the below functions will ensure that when the prev or next button is clicked
-    // on the non-modal images that it resets the starting slide of the modal image
-    // to the one that the non-modal is on. This is so whatever image is displayed on the 
-    // webpage will be the one that pops up first in the modal
-    
-    // slides is declared in "content" block. This is due to the way JS variables are hoisted
-    // on IE and Firefox if I were to declare slides here the functions would return undefined
-
-    function carousel_prev() {    //shift values to the right when prev btn clicked
-      slides.unshift(slides[4]); 
-      slides.pop();
+    // the below functions will ensure that when the prev or next button is clicked the slides on both 
+    // carousels change (modal and standard) accepts the currents project pk as a parameter. then uses that 
+    // to switch both carousels slide. 
+    function carousel_prev(pk) { 
+      $("#carousel-" + pk).carousel('prev');
+      $("#2carousel-" + pk).carousel('prev');
     }
-    function carousel_next() {    //shift values to left when next btn clicked
-      slides.push(slides[0]);
-      slides.shift();
-    }
-    function carousel_reset(){
-      $('.carousel').carousel(slides[0]);   //reset clicked carousel to correct slide
+    function carousel_next(pk) {
+      $("#carousel-" + pk).carousel('next');
+      $("#2carousel-" + pk).carousel('next');
     }
 
   </script>
