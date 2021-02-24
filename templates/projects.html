@@ -50,7 +50,7 @@
               <!-- id is set to change per pk of current project. This will match the href of 
               controls. This will allow us to have multiple carousels with controls. -->
               <div id="carousel-{{project.pk}}" class="carousel slide" data-interval="false">
-                  <div class="carousel-inner" data-toggle="modal" data-target="#modal_1">
+                  <div class="carousel-inner" data-toggle="modal" data-target="#modal_1-{{project.pk}}">
                     {% for image in project.get_images %}
                       {% if forloop.first %} <!-- the first element of bootraps carosel must be active-->
                         <div class="carousel-item active">
@@ -80,13 +80,13 @@
             {% endif %}
 
             <!-- modal images carousel -->
-            <div class="modal fade" id="modal_1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal fade" id="modal_1-{{project.pk}}" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered d-inline" role="document">
                 <div class="modal-content col-lg-12">
                   <div class="modal-body pt-3">
                     <!-- dynamic 2nd carousel id -->
                     <div id="carousel2-{{project.pk}}" class="carousel slide" data-interval="false">
-                      <div class="carousel-inner" data-toggle="modal" data-target="#modal_1">
+                      <div class="carousel-inner" data-toggle="modal" data-target="#modal_1-{{project.pk}}">
                         {% for image in project.get_images %}
                           {% if forloop.first %} <!-- the first element of bootraps carosel must be active-->
                             <div class="carousel-item active">
