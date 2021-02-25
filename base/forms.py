@@ -10,6 +10,8 @@ SKILLS = (
     ('<p>HTML <i class="fab fa-html5"></i></p>', 'HTML'),
     ('<p>CSS <i class="fab fa-css3"></i></p>', 'CSS'),
     ('<p>BootStrap <i class="fab fa-bootstrap"></i></p>', 'Bootstrap'),
+    ('<p>Java <i class="fab fa-java"></i></p>', 'Java'),
+    ('<p>JavaScript <i class="fab fa-js-square"></i></p>', 'JavaScript'),
     )
 
 class ProjectForm(forms.ModelForm):
