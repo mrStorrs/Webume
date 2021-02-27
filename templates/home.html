@@ -165,20 +165,39 @@
       <header class="text-center w-md-50 mx-auto mb-4">
         <h1>Projects</h1>
       </header>
+      
       <div class="row justify-content-center">
-
         <!-- This website..... -->
-        <div class="col-lg-8 mb-5">
+        <div class="col-lg-6">
           <a href="{% url 'projects' %}">
             <figure>
-              <img class="w-100 rounded-top" src="{% static 'img/web_snip.png' %}" alt="Image Description">
+              <img class="w-100 img-fluid rounded-top" src="{% static 'img/web_snip.png' %}" alt="Image Description" s style="height:280px"tyle="height:300px">
               <div class="u-box-shadow-sm bg-white text-center rounded p-4">
-                <div class="mb-3">
+                <div class="mb-3" style="height:150px">
                   <h5 class="mb-1">This Website</h5>
                   <medium class="d-block font-style-normal text-primary u-letter-spacing-xs">
                     Built from the gound up using; Django, Python, CSS, HTML, and more. This website is an 
                     excellent representation of my knowledge in full-stack web development. Click me for more
                     details.
+                  </medium>
+                </div>
+              </div>
+            </figure>
+          </a>
+        </div>
+
+        <!-- Adventure Land..... -->
+        <div class="col-lg-6">
+          <a href="{% url 'projects' %}">
+            <figure>
+              <img class="w-100 rounded-top" src="{% static 'img/One.png' %}" alt="Image Description" style="height:280px">
+              <div class="u-box-shadow-sm bg-white text-center rounded p-4">
+                <div class="mb-3"  style="height:150px">
+                  <h5 class="mb-1">Adventure.land Automation</h5>
+                  <medium class="d-block font-style-normal text-primary u-letter-spacing-xs">
+                    Adventure.land is a game where the only way you make progress is by fully automating your
+                    characters. With the use of JavaScript and a little HTML/CSS I created a comprehensive team
+                    of automated warriors. They fight, heal, sell-items, group-up, target, and move all on their own.
                   </medium>
                 </div>
               </div>
